@@ -6,8 +6,49 @@
     <title>Noticias de la escuela de artes marciales Clan Lurueña</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #111; color: #fff; text-align: center; padding: 30px 15px; border-bottom: 5px solid #c0392b; }
-        header h1 { margin: 0; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        header { 
+            background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%); 
+            color: #fff; 
+            text-align: center; 
+            padding: 35px 15px; 
+            border-bottom: 5px solid #c0392b;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .cabecera-shaolin {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .icono-templo {
+            width: 55px;
+            height: 55px;
+            fill: #c0392b;
+            filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
+            flex-shrink: 0;
+        }
+
+        header h1 { 
+            margin: 0; 
+            font-size: 1.8rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        @media (max-width: 600px) {
+            .cabecera-shaolin {
+                flex-direction: column;
+                gap: 10px;
+            }
+            header h1 {
+                font-size: 1.4rem;
+            }
+        }
         .contenedor { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
         .lista-noticias { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .tarjeta { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
@@ -26,8 +67,19 @@
 <body>
 
 <header>
-    <h1>Noticias de la escuela de artes marciales Clan Lurueña</h1>
+    <div class="cabecera-shaolin">
+        <svg class="icono-templo" viewBox="0 0 64 64" xmlns="http://w3.org">
+            <path d="M32 4C28 10 20 14 10 16L14 20H50L54 16C44 14 36 10 32 4ZM18 22V28H46V22H18ZM12 30L8 34H56L52 30H12ZM16 36V44H48V36H16ZM8 46L4 50H60L56 46H8ZM12 52V60H26V52H12ZM38 52V60H52V52H38Z"/>
+        </svg>
+
+        <h1>Noticias de la escuela de artes marciales Clan Lurueña</h1>
+
+        <svg class="icono-templo" viewBox="0 0 64 64" xmlns="http://w3.org">
+            <path d="M32 4C28 10 20 14 10 16L14 20H50L54 16C44 14 36 10 32 4ZM18 22V28H46V22H18ZM12 30L8 34H56L52 30H12ZM16 36V44H48V36H16ZM8 46L4 50H60L56 46H8ZM12 52V60H26V52H12ZM38 52V60H52V52H38Z"/>
+        </svg>
+    </div>
 </header>
+
 
 <div class="contenedor">
     <div id="vista-lista" class="lista-noticias"></div>
