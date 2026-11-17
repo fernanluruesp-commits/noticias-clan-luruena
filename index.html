@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="google-site-verification" content="YDX2TsCl2XarcqofwOR9z6_-K7ezY00_t8Blbb-IAqw" />
     <title>Noticias de la escuela de artes marciales Clan Lurueña</title>
-    <style>
+         <style>
         body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
         header { 
             background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%); 
@@ -52,10 +52,20 @@
         }
         .contenedor { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
         .lista-noticias { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
-        .tarjeta { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
+        .tarjeta { 
+            background: #fff; 
+            border-radius: 8px; 
+            overflow: hidden; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+            transition: transform 0.2s; 
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         .tarjeta:hover { transform: translateY(-5px); }
+        .tarjeta-enlace { text-decoration: none; color: inherit; display: block; cursor: pointer; }
         .tarjeta img { width: 100%; height: 220px; object-fit: cover; display: block; }
-        .tarjeta h2 { font-size: 1.25rem; margin: 15px; color: #111; }
+        .tarjeta h2 { font-size: 1.25rem; margin: 15px 15px 10px 15px; color: #111; }
         #vista-detalle { display: none; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .btn-volver { background: #c0392b; color: #fff; border: none; padding: 12px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
         .btn-volver:hover { background: #a93226; }
@@ -63,7 +73,67 @@
         #detalle-texto p { line-height: 1.7; font-size: 1.05rem; margin-bottom: 15px; }
         .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 25px; }
         .galeria img { width: 100%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-    </style>
+
+        /* --- ESTILOS BARRA DE COMPARTIR E ICONOS --- */
+        .barra-compartir {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 12px 15px;
+            border-top: 1px solid #eee;
+            align-items: center;
+        }
+        .barra-compartir span {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: #666;
+            margin-right: 4px;
+        }
+        .btn-social {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, opacity 0.2s;
+            padding: 0;
+        }
+        .btn-social:hover { 
+            opacity: 0.85; 
+            transform: scale(1.1);
+        }
+        .btn-social svg {
+            width: 17px;
+            height: 17px;
+            fill: currentColor;
+        }
+        .whatsapp { background-color: #25D366; }
+        .facebook { background-color: #1877F2; }
+        .twitter  { background-color: #000000; }
+        .telegram { background-color: #0088cc; }
+        .nativo   { background-color: #c0392b; }
+
+        /* Ajuste para cabecera principal */
+        .compartir-header {
+            justify-content: center;
+            border-top: none;
+            padding-bottom: 0;
+            margin-top: 15px;
+        }
+        .compartir-header span { color: #ddd; }
+
+        /* Ajuste dentro de la noticia abierta */
+        .compartir-detalle {
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+    </style>    
 </head>
 <body>
 
