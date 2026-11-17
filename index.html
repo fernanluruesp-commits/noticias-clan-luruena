@@ -280,39 +280,84 @@ Con este espectacular debut soñado y el título de campeón nacional bajo el br
     ];
     // =========================================================================
 
-    const vistaLista = document.getElementById('vista-lista');
+        const vistaLista = document.getElementById('vista-lista');
     const vistaDetalle = document.getElementById('vista-detalle');
+    const tituloOriginal = document.title;
+
+    // Convierte el título en un enlace limpio para Google (ej: victor-luruena-campeon)
+    function crearSlug(texto) {
+        return texto.toLowerCase()
+            .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
 
     function cargarNoticias() {
         noticias.sort((a, b) => new Date(b.orden) - new Date(a.orden));
         vistaLista.innerHTML = '';
         noticias.forEach((noticia, index) => {
+            const slug = crearSlug(noticia.titulo);
             vistaLista.innerHTML += `
-                <div class="tarjeta" onclick="abrirNoticia(${index})">
+                <a href="?noticia=${slug}" class="tarjeta" style="text-decoration: none; color: inherit; display: block;" onclick="event.preventDefault(); abrirNoticia(${index}, true);">
                     <img src="${noticia.portada}" alt="${noticia.titulo}">
                     <h2>${noticia.titulo}</h2>
-                </div>
+                </a>
             `;
         });
     }
 
-    function abrirNoticia(index) {
+    function abrirNoticia(index, actualizarUrl = true) {
         const n = noticias[index];
+        const slug = crearSlug(n.titulo);
+
         document.getElementById('detalle-titulo').innerText = n.titulo;
         const parrafos = n.texto.trim().split('\n').filter(p => p.trim() !== '');
         document.getElementById('detalle-texto').innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
-        document.getElementById('detalle-fotos').innerHTML = n.fotos.map(foto => `<img src="${foto}" alt="Foto del campeonato">`).join('');
+        document.getElementById('detalle-fotos').innerHTML = n.fotos.map(foto => `<img src="${foto}" alt="${n.titulo}">`).join('');
+        
+        // Cambia el título de la página para que Google indexe esta noticia por separado
+        document.title = n.titulo + " | Clan Lurueña";
+
+        if (actualizarUrl) {
+            window.history.pushState({ noticiaIndex: index }, n.titulo, `?noticia=${slug}`);
+        }
+
         vistaLista.style.display = 'none';
         vistaDetalle.style.display = 'block';
         window.scrollTo(0, 0);
     }
 
-    function cerrarNoticia() {
+    function cerrarNoticia(actualizarUrl = true) {
         vistaDetalle.style.display = 'none';
         vistaLista.style.display = 'grid';
+        document.title = tituloOriginal;
+
+        if (actualizarUrl) {
+            window.history.pushState({}, tituloOriginal, window.location.pathname);
+        }
+    }
+
+    // Permite usar el botón "Atrás" del navegador o del móvil
+    window.addEventListener('popstate', () => {
+        comprobarUrlInicial();
+    });
+
+    // Comprueba si alguien entra desde Google o WhatsApp a una noticia concreta
+    function comprobarUrlInicial() {
+        const params = new URLSearchParams(window.location.search);
+        const slugBuscado = params.get('noticia');
+        if (slugBuscado) {
+            const indexEncontrado = noticias.findIndex(n => crearSlug(n.titulo) === slugBuscado);
+            if (indexEncontrado !== -1) {
+                abrirNoticia(indexEncontrado, false);
+                return;
+            }
+        }
+        cerrarNoticia(false);
     }
 
     cargarNoticias();
+    comprobarUrlInicial();
 </script>
 
 </body>
