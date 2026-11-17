@@ -9,16 +9,12 @@
         header { background-color: #111; color: #fff; text-align: center; padding: 30px 15px; border-bottom: 5px solid #c0392b; }
         header h1 { margin: 0; font-size: 1.8rem; text-transform: uppercase; letter-spacing: 1px; }
         .contenedor { max-width: 1000px; margin: 30px auto; padding: 0 15px; }
-        
-        /* Cuadrícula de noticias */
         .lista-noticias { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
         .tarjeta { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 8px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
         .tarjeta:hover { transform: translateY(-5px); }
         .tarjeta img { width: 100%; height: 220px; object-fit: cover; display: block; }
         .tarjeta h2 { font-size: 1.25rem; margin: 15px; color: #111; }
         .tarjeta .fecha { font-size: 0.85rem; color: #777; margin: 0 15px 15px; display: block; }
-
-        /* Vista de noticia desarrollada */
         #vista-detalle { display: none; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .btn-volver { background: #c0392b; color: #fff; border: none; padding: 12px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
         .btn-volver:hover { background: #a93226; }
@@ -36,10 +32,8 @@
 </header>
 
 <div class="contenedor">
-    <!-- APARTADO PRINCIPAL DE NOTICIAS -->
     <div id="vista-lista" class="lista-noticias"></div>
 
-    <!-- APARTADO DE NOTICIA DESARROLLADA -->
     <div id="vista-detalle">
         <button class="btn-volver" onclick="cerrarNoticia()">← Volver a todas las noticias</button>
         <h2 id="detalle-titulo"></h2>
@@ -51,21 +45,29 @@
 
 <script>
     // =========================================================================
-    // ZONA DE NOTICIAS: AQUÍ ES DONDE AÑADES TUS NOTICIAS NUEVAS
+    // ZONA DE NOTICIAS: AQUÍ RELLENAS TUS NOTICIAS
     // =========================================================================
     const noticias = [
         {
-            titulo: "Gran éxito del Clan Lurueña en el Campeonato Regional",
+            orden: "2026-11-15",
+            titulo: "Título de la noticia 1",
             fecha: "15 de noviembre de 2026",
             portada: "foto1.jpg",
             texto: `
-                Aquí puedes pegar el primer párrafo de tu documento de Word. El sistema respetará los párrafos automáticamente.
-                
-                Aquí puedes pegar el segundo párrafo con todos los detalles de los combates, los medallas conseguidas y el esfuerzo de los alumnos.
+                Pega aquí el texto de tu Word para la noticia 1.
             `,
-            fotos: ["foto1.jpg", "foto2.jpg", "foto3.jpg"]
+            fotos: ["foto1.jpg", "foto2.jpg"]
+        },
+        {
+            orden: "2026-10-10",
+            titulo: "Título de la noticia 2",
+            fecha: "10 de octubre de 2026",
+            portada: "foto3.jpg",
+            texto: `
+                Pega aquí el texto de tu Word para la noticia 2.
+            `,
+            fotos: ["foto3.jpg", "foto4.jpg"]
         }
-        // Para añadir otra noticia, copia desde la llave { hasta }, pon una coma antes y pégalo aquí debajo.
     ];
     // =========================================================================
 
@@ -73,6 +75,7 @@
     const vistaDetalle = document.getElementById('vista-detalle');
 
     function cargarNoticias() {
+        noticias.sort((a, b) => new Date(b.orden) - new Date(a.orden));
         vistaLista.innerHTML = '';
         noticias.forEach((noticia, index) => {
             vistaLista.innerHTML += `
@@ -89,14 +92,9 @@
         const n = noticias[index];
         document.getElementById('detalle-titulo').innerText = n.titulo;
         document.getElementById('detalle-fecha').innerText = n.fecha;
-        
-        // Convierte los saltos de línea de Word en párrafos web
         const parrafos = n.texto.trim().split('\n').filter(p => p.trim() !== '');
         document.getElementById('detalle-texto').innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
-
-        // Carga todas las fotos del campeonato
         document.getElementById('detalle-fotos').innerHTML = n.fotos.map(foto => `<img src="${foto}" alt="Foto del campeonato">`).join('');
-
         vistaLista.style.display = 'none';
         vistaDetalle.style.display = 'block';
         window.scrollTo(0, 0);
@@ -112,4 +110,3 @@
 
 </body>
 </html>
-
