@@ -14,12 +14,10 @@
         .tarjeta:hover { transform: translateY(-5px); }
         .tarjeta img { width: 100%; height: 220px; object-fit: cover; display: block; }
         .tarjeta h2 { font-size: 1.25rem; margin: 15px; color: #111; }
-        .tarjeta .fecha { font-size: 0.85rem; color: #777; margin: 0 15px 15px; display: block; }
         #vista-detalle { display: none; background: #fff; padding: 25px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
         .btn-volver { background: #c0392b; color: #fff; border: none; padding: 12px 20px; font-size: 1rem; border-radius: 5px; cursor: pointer; margin-bottom: 20px; font-weight: bold; }
         .btn-volver:hover { background: #a93226; }
-        #detalle-titulo { font-size: 1.8rem; margin-top: 0; color: #111; }
-        #detalle-fecha { color: #777; font-size: 0.9rem; margin-bottom: 20px; display: block; }
+        #detalle-titulo { font-size: 1.8rem; margin-top: 0; margin-bottom: 20px; color: #111; }
         #detalle-texto p { line-height: 1.7; font-size: 1.05rem; margin-bottom: 15px; }
         .galeria { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 25px; }
         .galeria img { width: 100%; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
@@ -37,7 +35,6 @@
     <div id="vista-detalle">
         <button class="btn-volver" onclick="cerrarNoticia()">← Volver a todas las noticias</button>
         <h2 id="detalle-titulo"></h2>
-        <span id="detalle-fecha"></span>
         <div id="detalle-texto"></div>
         <div id="detalle-fotos" class="galeria"></div>
     </div>
@@ -45,17 +42,16 @@
 
 <script>
     // =========================================================================
-    // ZONA DE NOTICIAS: AQUÍ RELLENAS TUS NOTICIAS
+    // ZONA DE NOTICIAS: AQUÍ RELLENAS TUS 13 NOTICIAS
     // =========================================================================
-       const noticias = [
+    const noticias = [
         // --- NOTICIA 1 ---
         {
             orden: "2026-11-15",
             titulo: "Escribe aquí el título de la noticia 1",
-            fecha: "15 de noviembre de 2026",
             portada: "foto1.jpg",
             texto: `
-                Pega aquí el texto de Word de la noticia 1.
+                Pega aquí el texto de Word de la noticia 1 (con la fecha incluida dentro si quieres).
             `,
             fotos: ["foto1.jpg", "foto2.jpg"]
         },
@@ -64,7 +60,6 @@
         {
             orden: "2026-10-15",
             titulo: "Escribe aquí el título de la noticia 2",
-            fecha: "15 de octubre de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 2.
@@ -76,7 +71,6 @@
         {
             orden: "2026-09-15",
             titulo: "Escribe aquí el título de la noticia 3",
-            fecha: "15 de septiembre de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 3.
@@ -88,7 +82,6 @@
         {
             orden: "2026-08-15",
             titulo: "Escribe aquí el título de la noticia 4",
-            fecha: "15 de agosto de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 4.
@@ -100,7 +93,6 @@
         {
             orden: "2026-07-15",
             titulo: "Escribe aquí el título de la noticia 5",
-            fecha: "15 de julio de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 5.
@@ -112,7 +104,6 @@
         {
             orden: "2026-06-15",
             titulo: "Escribe aquí el título de la noticia 6",
-            fecha: "15 de junio de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 6.
@@ -124,7 +115,6 @@
         {
             orden: "2026-05-15",
             titulo: "Escribe aquí el título de la noticia 7",
-            fecha: "15 de mayo de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 7.
@@ -136,7 +126,6 @@
         {
             orden: "2026-04-15",
             titulo: "Escribe aquí el título de la noticia 8",
-            fecha: "15 de abril de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 8.
@@ -148,7 +137,6 @@
         {
             orden: "2026-03-15",
             titulo: "Escribe aquí el título de la noticia 9",
-            fecha: "15 de marzo de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 9.
@@ -160,7 +148,6 @@
         {
             orden: "2026-02-15",
             titulo: "Escribe aquí el título de la noticia 10",
-            fecha: "15 de febrero de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 10.
@@ -172,7 +159,6 @@
         {
             orden: "2026-01-15",
             titulo: "Escribe aquí el título de la noticia 11",
-            fecha: "15 de enero de 2026",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 11.
@@ -184,7 +170,6 @@
         {
             orden: "2025-12-15",
             titulo: "Escribe aquí el título de la noticia 12",
-            fecha: "15 de diciembre de 2025",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 12.
@@ -196,7 +181,6 @@
         {
             orden: "2025-11-15",
             titulo: "Escribe aquí el título de la noticia 13",
-            fecha: "15 de noviembre de 2025",
             portada: "foto1.jpg",
             texto: `
                 Pega aquí el texto de Word de la noticia 13.
@@ -217,7 +201,6 @@
                 <div class="tarjeta" onclick="abrirNoticia(${index})">
                     <img src="${noticia.portada}" alt="${noticia.titulo}">
                     <h2>${noticia.titulo}</h2>
-                    <span class="fecha">${noticia.fecha}</span>
                 </div>
             `;
         });
@@ -226,7 +209,6 @@
     function abrirNoticia(index) {
         const n = noticias[index];
         document.getElementById('detalle-titulo').innerText = n.titulo;
-        document.getElementById('detalle-fecha').innerText = n.fecha;
         const parrafos = n.texto.trim().split('\n').filter(p => p.trim() !== '');
         document.getElementById('detalle-texto').innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
         document.getElementById('detalle-fotos').innerHTML = n.fotos.map(foto => `<img src="${foto}" alt="Foto del campeonato">`).join('');
