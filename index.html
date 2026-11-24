@@ -257,29 +257,34 @@
             cursor: pointer;
             line-height: 1;
         }
-           /* --- PANELES DORADOS DEL CLAN EN EL FOOTER --- */
+      /* --- PANELES DORADOS DEL CLAN EN EL FOOTER --- */
 .clan-footer-contenedor {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 6px;
     margin: 20px auto 25px auto;
-    max-width: 320px;
+    max-width: 750px;
+    padding: 0 5px;
 }
 .panel-dorado {
-    width: 100%;
+    flex: 1;
+    min-width: 0;
     background: linear-gradient(180deg, #fff8cc 0%, #f1c40f 55%, #d4af37 100%);
     color: #1a0505;
     font-family: 'Cinzel', serif;
     font-weight: 900;
-    font-size: 0.95rem;
-    padding: 12px 20px;
+    font-size: clamp(0.68rem, 2.5vw, 0.95rem);
+    padding: 10px 4px;
     border-radius: 6px;
     border: 1px solid #fff8cc;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
     cursor: pointer;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
     transition: transform 0.2s, box-shadow 0.2s;
 }
 .panel-dorado:hover {
@@ -1014,13 +1019,13 @@ comprobarUrlInicial();
     <footer>
     <p class="footer-titulo">Escuela de Artes Marciales Clan Lurueña en Talavera de la Reina</p>
     <p class="footer-disciplinas">SANDA · MMA · JU JITSU · KICK BOXING · K1 · DIM MAK...</p>
-        <div class="clan-footer-contenedor">
-        <button class="panel-dorado" onclick="abrirPerfil('fernando')">Fernando Lurueña</button>
-        <button class="panel-dorado" onclick="abrirPerfil('eduardo')">Eduardo Lurueña</button>
-        <button class="panel-dorado" onclick="abrirPerfil('cesar')">César Lurueña</button>
-        <button class="panel-dorado" onclick="abrirPerfil('yoel')">Yoel Lurueña</button>
-        <button class="panel-dorado" onclick="abrirPerfil('victor')">Víctor Lurueña</button>
-    </div>
+       <div class="clan-footer-contenedor">
+    <button class="panel-dorado" onclick="abrirPerfil('fernando')">Fernando</button>
+    <button class="panel-dorado" onclick="abrirPerfil('eduardo')">Eduardo</button>
+    <button class="panel-dorado" onclick="abrirPerfil('cesar')">César</button>
+    <button class="panel-dorado" onclick="abrirPerfil('yoel')">Yoel</button>
+    <button class="panel-dorado" onclick="abrirPerfil('victor')">Víctor</button>
+</div>
         <div class="footer-inferior">
         &copy; Escuela de Artes Marciales Clan Lurueña
     </div>
