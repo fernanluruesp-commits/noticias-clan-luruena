@@ -257,6 +257,101 @@
             cursor: pointer;
             line-height: 1;
         }
+           /* --- PANELES DORADOS DEL CLAN EN EL FOOTER --- */
+.clan-footer-contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin: 20px auto 25px auto;
+    max-width: 320px;
+}
+.panel-dorado {
+    width: 100%;
+    background: linear-gradient(180deg, #fff8cc 0%, #f1c40f 55%, #d4af37 100%);
+    color: #1a0505;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    padding: 12px 20px;
+    border-radius: 6px;
+    border: 1px solid #fff8cc;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.panel-dorado:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(241, 196, 15, 0.45);
+}
+
+/* --- VISTA PERFIL / CURRÍCULUM --- */
+#vista-perfil {
+    display: none;
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.caja-curriculum {
+    background: #fdfbf2;
+    border-left: 5px solid #d4af37;
+    padding: 22px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    font-size: 1.02rem;
+    color: #222;
+}
+.caja-curriculum ul {
+    margin: 0;
+    padding-left: 20px;
+}
+.caja-curriculum li {
+    margin-bottom: 10px;
+}
+.caja-titulos-globales {
+    background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%);
+    color: #f5f5f5;
+    border: 2px solid #d4af37;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 35px;
+}
+.caja-titulos-globales h3 {
+    font-family: 'Cinzel', serif;
+    color: #f1c40f;
+    margin-top: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+    padding-bottom: 10px;
+}
+.grid-titulos-clan {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 8px 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.nota-victorias-clan {
+    font-size: 0.95rem;
+    color: #e0e0e0;
+    line-height: 1.6;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 12px;
+    margin-bottom: 0;
+}
+.subtitulo-noticias-miembro {
+    font-family: 'Cinzel', serif;
+    color: #c0392b;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}  
     </style> 
         <script type="application/ld+json">
     {
@@ -329,6 +424,23 @@
         <span class="cerrar-visor">&times;</span>
         <img id="visor-img" src="" alt="Imagen ampliada">
     </div>
+                   <div id="vista-perfil">
+            <button class="btn-volver" onclick="cerrarPerfil()">← Volver a todas las noticias</button>
+            <h2 id="perfil-nombre" style="font-family: 'Cinzel', serif; color: #111; margin-top: 0; font-size: 1.8rem; text-transform: uppercase;"></h2>
+            
+            <!-- Currículum individual -->
+            <div id="perfil-curriculum" class="caja-curriculum"></div>
+
+            <!-- Noticias filtradas del miembro -->
+            <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
+            <div id="perfil-noticias" class="lista-noticias"></div>
+        </div>
+            </div>
+
+            <!-- Noticias filtradas del miembro -->
+            <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
+            <div id="perfil-noticias" class="lista-noticias"></div>
+        </div>
 <script>
     // =========================================================================
     // ZONA DE NOTICIAS: AQUÍ RELLENAS TUS 15 NOTICIAS
@@ -678,57 +790,206 @@ Con este espectacular debut soñado y el título de campeón nacional bajo el br
         });
     }
 
-    function abrirNoticia(index, actualizarUrl = true) {
-        const n = noticias[index];
-        const slug = crearSlug(n.titulo);
+   const vistaPerfil = document.getElementById('vista-perfil');
 
-        document.getElementById('detalle-titulo').innerText = n.titulo;
-        document.getElementById('detalle-compartir').innerHTML = generarHtmlBotonesNoticia(index);
-        
-        const parrafos = n.texto.trim().split('\n').filter(p => p.trim() !== '');
-        document.getElementById('detalle-texto').innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
-        document.getElementById('detalle-fotos').innerHTML = n.fotos.filter(foto => foto.trim() !== '').map(foto => `<img src="${foto}" alt="${n.titulo}">`).join('');
-        
-        document.title = n.titulo + " | Clan Lurueña";
+const miembrosClan = {
+    fernando: {
+        nombre: "Fernando Lurueña",
+        palabrasClave: ["fernando", "hermanos lurueña"],
+        curriculum: `
+            <ul>
+                <li><strong>CAMPEÓN MUNDIAL DE KUNG FU EN COMBATE SANDA SANSHOU</strong>, en diferentes federaciones mundiales, en Italia (-65 kg y -70 kg), Portugal (-80 kg), Taiwán (-75 kg) y U.S.A. (-84 kg).</li>
+                <li><strong>CAMPEÓN MUNDIAL DE ARTES MARCIALES EN COMBATE</strong> en U.S.A. (-70 kg) y Reino Unido (Open Weight). También es <strong>CAMPEÓN MUNDIAL EN LA CATEGORÍA POWER PUNCH</strong>.</li>
+                <li><strong>CAMPEÓN DE EUROPA DE KUNG FU</strong> en la modalidad de combate hasta 85 kg.</li>
+                <li><strong>CAMPEÓN DE ESPAÑA DE KUNG FU 6 VECES CONSECUTIVAS</strong> en combate Full Contact (en la categoría de peso -65 kg en dos ocasiones, en la categoría de -70 kg en 3 ocasiones, y en la categoría de -75 kg).</li>
+                <li><strong>CAMPEÓN DE ESPAÑA DE KUNG FU CON ARMA LARGA.</strong></li>
+                <li><strong>CAMPEÓN EN EL TORNEO VILLA DE MADRID DE KUNG FU 3 VECES</strong> en Kung Fu Full Contact (en la categoría de peso de -65 kg y en la categoría de -70 kg en dos ocasiones).</li>
+                <li><strong>CAMPEÓN EN OTROS DIFERENTES TORNEOS DE KUNG FU & ARTES MARCIALES</strong> nacionales e internacionales en Kung Fu Full Contact y otras modalidades.</li>
+            </ul>
+        `
+    },
+    eduardo: {
+        nombre: "Eduardo Lurueña",
+        palabrasClave: ["eduardo", "hermanos lurueña"],
+        curriculum: `
+            <ul>
+                <li><strong>CAMPEÓN MUNDIAL DE KUNG FU EN COMBATE SANDA SANSHOU</strong>, en diferentes federaciones mundiales, en Italia (-65 kg y -70 kg), Portugal (-75 kg y +80 kg), Reino Unido (-75 kg), y en <strong>TAO LU (Ucrania)</strong>.</li>
+                <li><strong>CAMPEÓN MUNDIAL DE ARTES MARCIALES EN COMBATE</strong> en San Diego (-70 kg), en Orlando (-70 kg, US Open) y en Londres (-75 kg). También es <strong>CAMPEÓN MUNDIAL EN LA CATEGORÍA KATA FORM</strong>.</li>
+                <li><strong>CAMPEÓN DE ESPAÑA DE KUNG FU 6 VECES CONSECUTIVAS</strong> en combate Full Contact (en la categoría de peso -65 kg en cuatro ocasiones y en la categoría de -70 kg en 2 ocasiones).</li>
+                <li><strong>CAMPEÓN DE ESPAÑA DE KUNG FU CON ARMA LARGA.</strong></li>
+                <li><strong>CAMPEÓN EN EL TORNEO VILLA DE MADRID DE KUNG FU 3 VECES</strong> en Kung Fu Full Contact (en la categoría de peso de -65 kg).</li>
+                <li><strong>CAMPEÓN EN OTROS DIFERENTES TORNEOS DE KUNG FU & ARTES MARCIALES</strong> nacionales e internacionales en Kung Fu Full Contact y otras modalidades.</li>
+            </ul>
+        `
+    },
+    cesar: {
+        nombre: "César Lurueña",
+        palabrasClave: ["césar", "cesar"],
+        curriculum: `
+            <ul>
+                <li><strong>Campeón del Mundo</strong> de artes marciales en combate Kumite.</li>
+                <li><strong>2 veces Campeón de Europa</strong> de Kung Fu Sanda.</li>
+                <li><strong>Campeón de España</strong> de Kung Fu Qing Da.</li>
+            </ul>
+        `
+    },
+    yoel: {
+        nombre: "Yoel Lurueña",
+        palabrasClave: ["yoel"],
+        curriculum: `
+            <ul>
+                <li><strong>Campeón del Mundo</strong> de artes marciales en combate Kumite.</li>
+                <li><strong>Campeón de Europa</strong> de Kung Fu Sanda.</li>
+                <li><strong>Campeón de España</strong> de Kung Fu Sanda.</li>
+                <li><strong>3 veces Campeón Nacional</strong> de Kick Boxing.</li>
+            </ul>
+        `
+    },
+    victor: {
+        nombre: "Víctor Lurueña",
+        palabrasClave: ["víctor", "victor"],
+        curriculum: `
+            <ul>
+                <li><strong>Campeón de España</strong> de Kick Boxing Light.</li>
+            </ul>
+        `
+    }
+};
 
-        if (actualizarUrl) {
-            window.history.pushState({ noticiaIndex: index }, n.titulo, `?noticia=${slug}`);
-        }
+function abrirNoticia(index, actualizarUrl = true) {
+    const n = noticias[index];
+    const slug = crearSlug(n.titulo);
 
-        vistaLista.style.display = 'none';
-        vistaDetalle.style.display = 'block';
-        window.scrollTo(0, 0);
+    document.getElementById('detalle-titulo').innerText = n.titulo;
+    document.getElementById('detalle-compartir').innerHTML = generarHtmlBotonesNoticia(index);
+
+    const parrafos = n.texto.trim().split('\n').filter(p => p.trim() !== '');
+    document.getElementById('detalle-texto').innerHTML = parrafos.map(p => `<p>${p}</p>`).join('');
+    document.getElementById('detalle-fotos').innerHTML = n.fotos.filter(foto => foto.trim() !== '').map(foto => `<img src="${foto}" alt="${n.titulo}">`).join('');
+
+    document.title = n.titulo + " | Clan Lurueña";
+
+    if (actualizarUrl) {
+        window.history.pushState({ noticiaIndex: index }, n.titulo, `?noticia=${slug}`);
     }
 
-    function cerrarNoticia(actualizarUrl = true) {
-        vistaDetalle.style.display = 'none';
-        vistaLista.style.display = 'grid';
-        document.title = tituloOriginal;
+    vistaLista.style.display = 'none';
+    vistaPerfil.style.display = 'none';
+    vistaDetalle.style.display = 'block';
+    window.scrollTo(0, 0);
+}
 
-        if (actualizarUrl) {
-            window.history.pushState({}, tituloOriginal, window.location.pathname);
+function cerrarNoticia(actualizarUrl = true) {
+    vistaDetalle.style.display = 'none';
+    vistaPerfil.style.display = 'none';
+    vistaLista.style.display = 'grid';
+    document.title = tituloOriginal;
+
+    if (actualizarUrl) {
+        window.history.pushState({}, tituloOriginal, window.location.pathname);
+    }
+}
+
+function abrirPerfil(id, actualizarUrl = true) {
+    const miembro = miembrosClan[id];
+    if (!miembro) return;
+
+    document.getElementById('perfil-nombre').innerText = miembro.nombre;
+    document.getElementById('perfil-curriculum').innerHTML = miembro.curriculum;
+    document.getElementById('perfil-subtitulo-noticias').innerText = "Noticias de " + miembro.nombre;
+    document.title = miembro.nombre + " | Clan Lurueña";
+
+    const contenedorNoticias = document.getElementById('perfil-noticias');
+    contenedorNoticias.innerHTML = '';
+
+    // 1. Filtramos todas las noticias del miembro manteniendo su índice real
+    let noticiasDelMiembro = [];
+    noticias.forEach((noticia, index) => {
+        const textoCompleto = (noticia.titulo + " " + noticia.texto).toLowerCase();
+        const coincide = miembro.palabrasClave.some(palabra => textoCompleto.includes(palabra));
+        if (coincide) {
+            noticiasDelMiembro.push({ noticia, index });
+        }
+    });
+
+    // 2. Ordenamos cronológicamente: de más moderna a más antigua
+    noticiasDelMiembro.sort((a, b) => new Date(b.noticia.orden) - new Date(a.noticia.orden));
+
+    // 3. Regla especial para César: fijar su Campeonato de Europa en Atenas como la primera noticia
+    if (id === 'cesar') {
+        const posAtenas = noticiasDelMiembro.findIndex(item =>
+            (item.noticia.titulo + " " + item.noticia.texto).toLowerCase().includes("atenas")
+        );
+        if (posAtenas > 0) {
+            const [noticiaAtenas] = noticiasDelMiembro.splice(posAtenas, 1);
+            noticiasDelMiembro.unshift(noticiaAtenas);
         }
     }
 
-    // Detecta si alguien entra desde un enlace compartido (?noticia=...) o usa el botón Atrás del navegador
-    function comprobarUrlInicial() {
-        const params = new URLSearchParams(window.location.search);
-        const slugUrl = params.get('noticia');
-        if (slugUrl) {
-            const indexEncontrado = noticias.findIndex(n => crearSlug(n.titulo) === slugUrl);
-            if (indexEncontrado !== -1) {
-                abrirNoticia(indexEncontrado, false);
-                return;
-            }
-        }
-        cerrarNoticia(false);
+    // 4. Pintamos las tarjetas ya ordenadas
+    noticiasDelMiembro.forEach(({ noticia, index }) => {
+        const slug = crearSlug(noticia.titulo);
+        contenedorNoticias.innerHTML += `
+            <div class="tarjeta">
+                <a href="?noticia=${slug}" class="tarjeta-enlace" onclick="event.preventDefault(); abrirNoticia(${index}, true);">
+                    <img src="${noticia.portada}" alt="${noticia.titulo}">
+                    <h2>${noticia.titulo}</h2>
+                </a>
+                <div class="barra-compartir">
+                    ${generarHtmlBotonesNoticia(index)}
+                </div>
+            </div>
+        `;
+    });
+
+    if (actualizarUrl) {
+        window.history.pushState({ perfilId: id }, miembro.nombre, `?perfil=${id}`);
     }
 
-    window.addEventListener('popstate', comprobarUrlInicial);
+    vistaLista.style.display = 'none';
+    vistaDetalle.style.display = 'none';
+    vistaPerfil.style.display = 'block';
+    window.scrollTo(0, 0);
+}
 
-    // Iniciar la página
-    cargarNoticias();
-    comprobarUrlInicial();
+function cerrarPerfil(actualizarUrl = true) {
+    vistaPerfil.style.display = 'none';
+    vistaDetalle.style.display = 'none';
+    vistaLista.style.display = 'grid';
+    document.title = tituloOriginal;
+
+    if (actualizarUrl) {
+        window.history.pushState({}, tituloOriginal, window.location.pathname);
+    }
+}
+
+function comprobarUrlInicial() {
+    const params = new URLSearchParams(window.location.search);
+    const slugUrl = params.get('noticia');
+    const perfilUrl = params.get('perfil');
+
+    if (slugUrl) {
+        const indexEncontrado = noticias.findIndex(n => crearSlug(n.titulo) === slugUrl);
+        if (indexEncontrado !== -1) {
+            abrirNoticia(indexEncontrado, false);
+            return;
+        }
+    }
+
+    if (perfilUrl && miembrosClan[perfilUrl]) {
+        abrirPerfil(perfilUrl, false);
+        return;
+    }
+
+    cerrarNoticia(false);
+}
+
+window.addEventListener('popstate', comprobarUrlInicial);
+
+// Iniciar la página
+cargarNoticias();
+comprobarUrlInicial();
+
         // --- LÓGICA DEL VISOR DE IMÁGENES ---
     const visorModal = document.getElementById('visor-modal');
     const visorImg = document.getElementById('visor-img');
@@ -753,7 +1014,14 @@ Con este espectacular debut soñado y el título de campeón nacional bajo el br
     <footer>
     <p class="footer-titulo">Escuela de Artes Marciales Clan Lurueña en Talavera de la Reina</p>
     <p class="footer-disciplinas">SANDA · MMA · JU JITSU · KICK BOXING · K1 · DIM MAK...</p>
-    <div class="footer-inferior">
+        <div class="clan-footer-contenedor">
+        <button class="panel-dorado" onclick="abrirPerfil('fernando')">Fernando Lurueña</button>
+        <button class="panel-dorado" onclick="abrirPerfil('eduardo')">Eduardo Lurueña</button>
+        <button class="panel-dorado" onclick="abrirPerfil('cesar')">César Lurueña</button>
+        <button class="panel-dorado" onclick="abrirPerfil('yoel')">Yoel Lurueña</button>
+        <button class="panel-dorado" onclick="abrirPerfil('victor')">Víctor Lurueña</button>
+    </div>
+        <div class="footer-inferior">
         &copy; Escuela de Artes Marciales Clan Lurueña
     </div>
 </footer>
