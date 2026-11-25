@@ -1,67 +1,116 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://sitemaps.org">
+  <!-- Página principal -->
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/</loc>
+    <loc>https://github.io</loc>
     <priority>1.0</priority>
   </url>
+
+  <!-- Perfiles individuales del Clan Lurueña -->
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=victor-luruena-actual-campeon-nacional-de-kick-boxing-light</loc>
+    <loc>https://github.io?perfil=fernando</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://github.io?perfil=eduardo</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://github.io?perfil=cesar</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://github.io?perfil=yoel</loc>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://github.io?perfil=victor</loc>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Noticias individuales (1 a 21) -->
+  <url>
+    <loc>https://github.io?noticia=los-hermanos-luruena-arrasan-en-el-villa-de-madrid</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-invitado-para-ser-premiado-para-el-hall-of-fame-por-las-autoridades-de-artes-marciales-de-la-india</loc>
-    <priority>0.8</priority>
-  </url>
-    <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-campeon-en-open-mundial-de-kung-fu-en-usa</loc>
+    <loc>https://github.io?noticia=hermanos-luruena-pluri-campeones-de-espana</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-y-cesar-luruena-campeones-en-el-campeonato-de-europa-de-kung-fu</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-campeon-del-mundo-de-kung-fu-en-italia</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=campeones-en-el-mundial-de-artes-marciales-en-londres</loc>
+    <loc>https://github.io?noticia=hermanos-luruena-campeones-del-mundo-en-usa</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=cesar-luruena-y-yoel-luruena-campeones-de-europa-de-kung-fu-en-combate-sanda</loc>
+    <loc>https://github.io?noticia=fernando-luruena-conquista-otro-titulo-mundial-en-italia</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=yoel-luruena-cesar-luruena-y-sergio-garcia-luruena-campeones-de-espana-en-el-nacional-de-kung-fu</loc>
+    <loc>https://github.io?noticia=hermanos-luruena-campeones-del-mundo-en-portugal</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=yoel-luruena-obtiene-la-victoria-en-otro-open-nacional-de-kick-boxing</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-campeon-en-el-internacional-de-amurrio</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=eduardo-luruena-campeon-en-el-mundial-de-kung-fu-sanda-wac</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-campeon-del-us-open-martial-arts</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-se-procalama-campeon-del-mundo-de-kung-fu-wu-shu-en-taiwan</loc>
+    <loc>https://github.io?noticia=fernando-luruena-y-eduardo-luruena-campeones-del-mundo-de-artes-marciales-en-londres</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=eduardo-luruena-se-proclama-campeon-del-mundo-en-kiev</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-consigue-el-oro-en-las-olimpiadas-de-artes-marciales</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-y-eduardo-luruena-campeones-del-mundo-de-artes-marciales-en-londres</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-se-proclama-campeon-del-mundo-en-kiev</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=hermanos-luruena-campeones-del-mundo-en-portugal</loc>
+    <loc>https://github.io?noticia=fernando-luruena-se-procalama-campeon-del-mundo-de-kung-fu-wu-shu-en-taiwan</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=hermanos-luruena-campeones-del-mundo-en-usa</loc>
+    <loc>https://github.io?noticia=eduardo-luruena-campeon-en-el-mundial-de-kung-fu-sanda-wac</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://clan-luruena-martial-arts-news.netlify.app/?noticia=fernando-luruena-conquista-otro-titulo-mundial-en-italia</loc>
+    <loc>https://github.io?noticia=yoel-luruena-obtiene-la-victoria-en-otro-open-nacional-de-kick-boxing</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=yoel-luruena-cesar-luruena-y-sergio-garcia-luruena-campeones-de-espana-en-el-nacional-de-kung-fu</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=campeones-en-el-mundial-de-artes-marciales-en-londres</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=cesar-luruena-y-yoel-luruena-campeones-de-europa-de-kung-fu-en-combate-sanda</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=fernando-luruena-y-cesar-luruena-campeones-en-el-campeonato-de-europa-de-kung-fu</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=fernando-luruena-invitado-para-ser-premiado-para-el-hall-of-fame-por-las-autoridades-de-artes-marciales-de-la-india</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=fernando-luruena-campeon-en-open-mundial-de-kung-fu-en-usa</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://github.io?noticia=victor-luruena-actual-campeon-nacional-de-kick-boxing-light</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
