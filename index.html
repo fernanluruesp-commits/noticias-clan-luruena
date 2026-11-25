@@ -322,55 +322,71 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-.caja-curriculum {
-    background: #fdfbf2;
-    border-left: 5px solid #d4af37;
-    padding: 22px;
-    border-radius: 6px;
-    margin-bottom: 25px;
-    line-height: 1.7;
-    font-size: 1.02rem;
-    color: #222;
-}
-.caja-curriculum ul {
-    margin: 0;
-    padding-left: 20px;
-}
-.caja-curriculum li {
-    margin-bottom: 10px;
-}
-.caja-titulos-globales {
-    background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%);
-    color: #f5f5f5;
-    border: 2px solid #d4af37;
-    border-radius: 8px;
-    padding: 20px 25px;
-    margin-bottom: 35px;
-}
-.caja-titulos-globales h3 {
-    font-family: 'Cinzel', serif;
-    color: #f1c40f;
-    margin-top: 0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-    padding-bottom: 10px;
-}
-.grid-titulos-clan {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 8px 20px;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-.nota-victorias-clan {
-    font-size: 0.95rem;
-    color: #e0e0e0;
-    line-height: 1.6;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    padding-top: 12px;
-    margin-bottom: 0;
-}
+        .caja-curriculum {
+            background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%);
+            color: #fff8cc;
+            border: 2px solid #d4af37;
+            border-left: 6px solid #f1c40f;
+            padding: 24px 26px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            font-size: 1.02rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+        .caja-curriculum ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .caja-curriculum li {
+            margin-bottom: 12px;
+        }
+        .caja-curriculum strong {
+            font-family: 'Cinzel', serif;
+            color: #f1c40f;
+            letter-spacing: 0.5px;
+        }
+        .caja-titulos-globales {
+            background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%);
+            color: #f5f5f5;
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            padding: 24px 26px;
+            margin-bottom: 35px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+        .caja-titulos-globales h3 {
+            font-family: 'Cinzel', serif;
+            color: #f1c40f;
+            font-size: 1.35rem;
+            text-align: center;
+            margin-top: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.5);
+            padding-bottom: 12px;
+        }
+        .grid-titulos-clan {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px 20px;
+            margin-bottom: 18px;
+            font-family: 'Cinzel', serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: #fff8cc;
+            letter-spacing: 0.5px;
+        }
+        .nota-victorias-clan {
+            font-size: 0.98rem;
+            font-style: italic;
+            color: #f5e6b3;
+            line-height: 1.7;
+            border-top: 1px solid rgba(212, 175, 55, 0.35);
+            padding-top: 14px;
+            margin-bottom: 0;
+        }
 .subtitulo-noticias-miembro {
     font-family: 'Cinzel', serif;
     color: #c0392b;
@@ -451,22 +467,36 @@
         <span class="cerrar-visor">&times;</span>
         <img id="visor-img" src="" alt="Imagen ampliada">
     </div>
-                   <div id="vista-perfil">
-            <button class="btn-volver" onclick="cerrarPerfil()">← Volver a todas las noticias</button>
-            <h2 id="perfil-nombre" style="font-family: 'Cinzel', serif; color: #111; margin-top: 0; font-size: 1.8rem; text-transform: uppercase;"></h2>
-            
-            <!-- Currículum individual -->
-            <div id="perfil-curriculum" class="caja-curriculum"></div>
+                             <div id="vista-perfil">
+                <button class="btn-volver" onclick="cerrarPerfil()">← Volver a todas las noticias</button>
+                <h2 id="perfil-nombre" style="font-family: 'Cinzel', serif; color: #111; margin-top: 0; font-size: 1.8rem; text-transform: uppercase;"></h2>
+                
+                <!-- Currículum individual -->
+                <div id="perfil-curriculum" class="caja-curriculum"></div>
 
-            <!-- Noticias filtradas del miembro -->
-            <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
-            <div id="perfil-noticias" class="lista-noticias"></div>
-        </div>
+                <!-- Noticias filtradas del miembro -->
+                <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
+                <div id="perfil-noticias" class="lista-noticias"></div>
+
+                <!-- Títulos globales de los 5 miembros del Clan Lurueña -->
+                <div class="caja-titulos-globales" style="margin-top: 40px;">
+                    <h3>Títulos de los 5 miembros del clan Lurueña</h3>
+                    <div class="grid-titulos-clan">
+                        <div>🏆 Campeones mundo Sanda x 8</div>
+                        <div>🏆 Campeones mundo Artes Marciales x 8</div>
+                        <div>🏆 Campeones del mundo Tui Shou x 1</div>
+                        <div>🏆 Campeones del mundo Tao Lu x 2</div>
+                        <div>🥇 Campeones de Europa Sanda x 4</div>
+                        <div>🥇 Campeones de España Sanda x 14</div>
+                        <div>🥇 Campeones España palo largo x 2</div>
+                        <div>🥇 Campeones de nacionales Artes Marciales x 6</div>
+                        <div>🥇 Campeones Villa de Madrid de Kung Fu Sanda x 6</div>
+                    </div>
+                    <p class="nota-victorias-clan">
+                        Victorias de manera muy superior ante campeones internacionales de MMA, Kick Boxing, Taekwondo, Karate, Muay Thai... Victorias también de manera muy superior a campeones de Boxeo Neo Profesional en combates con reglas de Boxeo. Victorias en combates con sus propias reglas a cinturones negros de Jiu Jitsu, Judo, Wing Chun...
+                    </p>
+                </div>
             </div>
-
-            <!-- Noticias filtradas del miembro -->
-            <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
-            <div id="perfil-noticias" class="lista-noticias"></div>
         </div>
 <script>
     // =========================================================================
