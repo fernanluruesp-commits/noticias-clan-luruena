@@ -473,6 +473,7 @@
                 
                 <!-- Currículum individual -->
                 <div id="perfil-curriculum" class="caja-curriculum"></div>
+                <div id="perfil-compartir" class="barra-compartir" style="margin-bottom: 25px; justify-content: flex-start;"></div>
 
                 <!-- Noticias filtradas del miembro -->
                 <h3 id="perfil-subtitulo-noticias" class="subtitulo-noticias-miembro">Noticias y campeonatos</h3>
@@ -958,7 +959,16 @@ function abrirPerfil(id, actualizarUrl = true) {
     document.getElementById('perfil-curriculum').innerHTML = miembro.curriculum;
     document.getElementById('perfil-subtitulo-noticias').innerText = "Noticias de " + miembro.nombre;
     document.title = miembro.nombre + " | Clan Lurueña";
+        const urlPerfil = window.location.origin + window.location.pathname + '?perfil=' + id;
+        const textoCompartir = encodeURIComponent(miembro.nombre + " - Currículum y Campeonatos | Clan Lurueña");
+        const urlEncoded = encodeURIComponent(urlPerfil);
 
+        document.getElementById('perfil-compartir').innerHTML = `
+            <span style="font-weight: bold; color: #333; margin-right: 8px;">Compartir perfil:</span>
+            <a href="https://whatsapp.com{textoCompartir}%20${urlEncoded}" target="_blank" class="btn-compartir btn-wa" title="Compartir por WhatsApp">WhatsApp</a>
+            <a href="https://facebook.com{urlEncoded}" target="_blank" class="btn-compartir btn-fb" title="Compartir en Facebook">Facebook</a>
+            <button type="button" class="btn-compartir btn-copy" onclick="navigator.clipboard.writeText('${urlPerfil}'); alert('¡Enlace de ${miembro.nombre} copiado!');">Copiar enlace</button>
+        `;
     const contenedorNoticias = document.getElementById('perfil-noticias');
     contenedorNoticias.innerHTML = '';
 
@@ -1072,13 +1082,13 @@ comprobarUrlInicial();
     });
 </script>
   <footer>
-    <div class="clan-footer-contenedor">
-        <button class="panel-dorado" onclick="abrirPerfil('fernando')">Fernando</button>
-        <button class="panel-dorado" onclick="abrirPerfil('eduardo')">Eduardo</button>
-        <button class="panel-dorado" onclick="abrirPerfil('cesar')">César</button>
-        <button class="panel-dorado" onclick="abrirPerfil('yoel')">Yoel</button>
-        <button class="panel-dorado" onclick="abrirPerfil('victor')">Víctor</button>
-    </div>
+          <div class="clan-footer-contenedor">
+            <a href="?perfil=fernando" class="panel-dorado" style="text-decoration: none; display: inline-block;" onclick="event.preventDefault(); abrirPerfil('fernando');">Fernando</a>
+            <a href="?perfil=eduardo" class="panel-dorado" style="text-decoration: none; display: inline-block;" onclick="event.preventDefault(); abrirPerfil('eduardo');">Eduardo</a>
+            <a href="?perfil=cesar" class="panel-dorado" style="text-decoration: none; display: inline-block;" onclick="event.preventDefault(); abrirPerfil('cesar');">César</a>
+            <a href="?perfil=yoel" class="panel-dorado" style="text-decoration: none; display: inline-block;" onclick="event.preventDefault(); abrirPerfil('yoel');">Yoel</a>
+            <a href="?perfil=victor" class="panel-dorado" style="text-decoration: none; display: inline-block;" onclick="event.preventDefault(); abrirPerfil('victor');">Victor</a>
+        </div>
     <p class="footer-titulo">Escuela de Artes Marciales Clan Lurueña en Talavera de la Reina</p>
     <p class="footer-disciplinas">SANDA · MMA · JU JITSU · KICK BOXING · K1 · DIM MAK...</p>
     <div class="footer-inferior">
