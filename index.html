@@ -322,6 +322,18 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
+                     .foto-perfil-contenedor {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        .foto-perfil {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+            border: 3px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
         .caja-curriculum {
             background: linear-gradient(135deg, #1a0505 0%, #111111 50%, #2c0703 100%);
             color: #fff8cc;
@@ -470,7 +482,10 @@
                              <div id="vista-perfil">
                 <button class="btn-volver" onclick="cerrarPerfil()">← Volver a todas las noticias</button>
                 <h2 id="perfil-nombre" style="font-family: 'Cinzel', serif; color: #111; margin-top: 0; font-size: 1.8rem; text-transform: uppercase;"></h2>
-                
+                            <div id="perfil-foto-contenedor" class="foto-perfil-contenedor" style="display: none;">
+                <img id="perfil-foto" class="foto-perfil" src="" alt="Foto de perfil">
+            </div>
+
                 <!-- Currículum individual -->
                 <div id="perfil-curriculum" class="caja-curriculum"></div>
                 <div id="perfil-compartir" class="barra-compartir" style="margin-bottom: 25px; justify-content: flex-start;"></div>
@@ -853,6 +868,11 @@ Con este espectacular debut soñado y el título de campeón nacional bajo el br
 const miembrosClan = {
     fernando: {
         nombre: "Fernando Lurueña",
+            const miembrosClan = {
+        fernando: {
+            nombre: "Fernando Lurueña",
+            foto: "fernando.jpg",
+            palabrasClave: ["fernando", "hermanos lurueña"],
         palabrasClave: ["fernando", "hermanos lurueña"],
         curriculum: `
             <ul>
@@ -864,11 +884,17 @@ const miembrosClan = {
                 <li><strong>CAMPEÓN DE ESPAÑA DE KUNG FU CON ARMA LARGA.</strong></li>
                 <li><strong>CAMPEÓN EN EL TORNEO VILLA DE MADRID DE KUNG FU 3 VECES</strong> en Kung Fu Full Contact (en la categoría de peso de -65 kg y en la categoría de -70 kg en dos ocasiones).</li>
                 <li><strong>CAMPEÓN EN OTROS DIFERENTES TORNEOS DE KUNG FU & ARTES MARCIALES</strong> nacionales e internacionales en Kung Fu Full Contact y otras modalidades.</li>
+                <li>Médico doctorado en acupuntura y medicina tradicional china por la Universidad Internacional de Medicinas Complementarias en Colombo (Sri Lanka), y por la Asociación de la Unión Internacional de Medicinas Complementarias, escribiendo los libros "Manual de acupuntura Fernando Lurueña" y "Vademécum de acupuntura Fernando Lurueña.</li>
             </ul>
         `
     },
     eduardo: {
         nombre: "Eduardo Lurueña",
+            const miembrosClan = {
+        fernando: {
+            nombre: "Fernando Lurueña",
+            foto: "fernando.jpg",
+            palabrasClave: ["fernando", "hermanos lurueña"],
         palabrasClave: ["eduardo", "hermanos lurueña"],
         curriculum: `
             <ul>
@@ -885,6 +911,11 @@ const miembrosClan = {
     },
     cesar: {
         nombre: "César Lurueña",
+            const miembrosClan = {
+        fernando: {
+            nombre: "Fernando Lurueña",
+            foto: "fernando.jpg",
+            palabrasClave: ["fernando", "hermanos lurueña"],
         palabrasClave: ["césar", "cesar"],
         curriculum: `
             <ul>
@@ -896,6 +927,11 @@ const miembrosClan = {
     },
     yoel: {
         nombre: "Yoel Lurueña",
+            const miembrosClan = {
+        fernando: {
+            nombre: "Fernando Lurueña",
+            foto: "fernando.jpg",
+            palabrasClave: ["fernando", "hermanos lurueña"],
         palabrasClave: ["yoel"],
         curriculum: `
             <ul>
@@ -908,6 +944,11 @@ const miembrosClan = {
     },
     victor: {
         nombre: "Víctor Lurueña",
+            const miembrosClan = {
+        fernando: {
+            nombre: "Fernando Lurueña",
+            foto: "fernando.jpg",
+            palabrasClave: ["fernando", "hermanos lurueña"],
         palabrasClave: ["víctor", "victor"],
         curriculum: `
             <ul>
