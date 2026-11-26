@@ -1127,7 +1127,11 @@ comprobarUrlInicial();
             visorModal.style.display = 'flex';
         }
     });
-
+    document.getElementById('perfil-foto').style.cursor = 'pointer';
+    document.getElementById('perfil-foto').addEventListener('click', function() {
+        visorImg.src = this.src;
+        visorModal.style.display = 'flex';
+    });
     function cerrarVisor() {
         visorModal.style.display = 'none';
     }
