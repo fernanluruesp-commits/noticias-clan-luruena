@@ -865,16 +865,12 @@ Con este espectacular debut soñado y el título de campeón nacional bajo el br
 
    const vistaPerfil = document.getElementById('vista-perfil');
 
-const miembrosClan = {
-    fernando: {
-        nombre: "Fernando Lurueña",
             const miembrosClan = {
         fernando: {
             nombre: "Fernando Lurueña",
-            foto: "fernando.jpg",
-            palabrasClave: ["fernando", "hermanos lurueña"],
-        palabrasClave: ["fernando", "hermanos lurueña"],
-        curriculum: `
+            foto: "fernandoluruena.jpg",
+            palabrasClave: ["fernando", "luruena", "fernandoluruena", "clanluruena", "hermanos lurueña"],
+                curriculum: `
             <ul>
                 <li><strong>CAMPEÓN MUNDIAL DE KUNG FU EN COMBATE SANDA SANSHOU</strong>, en diferentes federaciones mundiales, en Italia (-65 kg y -70 kg), Portugal (-80 kg), Taiwán (-75 kg) y U.S.A. (-84 kg).</li>
                 <li><strong>CAMPEÓN MUNDIAL DE ARTES MARCIALES EN COMBATE</strong> en U.S.A. (-70 kg) y Reino Unido (Open Weight). 
@@ -889,14 +885,10 @@ const miembrosClan = {
         `
     },
     eduardo: {
-        nombre: "Eduardo Lurueña",
-            const miembrosClan = {
-        fernando: {
-            nombre: "Fernando Lurueña",
-            foto: "fernando.jpg",
-            palabrasClave: ["fernando", "hermanos lurueña"],
-        palabrasClave: ["eduardo", "hermanos lurueña"],
-        curriculum: `
+            nombre: "Eduardo Lurueña",
+            foto: "eduardoluruena.jpg",
+            palabrasClave: ["eduardo", "luruena", "eduardoluruena", "clanluruena", "hermanos lurueña"],
+               curriculum: `
             <ul>
                 <li><strong>CAMPEÓN MUNDIAL DE KUNG FU EN COMBATE SANDA SANSHOU</strong>, en diferentes federaciones mundiales, en Italia (-65 kg y -70 kg), Portugal (-75 kg y +80 kg), Reino Unido (-75 kg).</li>
                 <li><strong>CAMPEÓN MUNDIAL DE KUNG FU EN TAO LU</strong>, en Ucrania.</li>
@@ -911,12 +903,8 @@ const miembrosClan = {
     },
     cesar: {
         nombre: "César Lurueña",
-            const miembrosClan = {
-        fernando: {
-            nombre: "Fernando Lurueña",
-            foto: "fernando.jpg",
-            palabrasClave: ["fernando", "hermanos lurueña"],
-        palabrasClave: ["césar", "cesar"],
+        foto: "cesarluruena.jpg",
+        palabrasClave: ["césar", "cesar", "cesarluruena", "luruena", "césarluruena, "clanluruena"],
         curriculum: `
             <ul>
                 <li><strong>Campeón del Mundo</strong> de artes marciales en combate.</li>
@@ -927,12 +915,8 @@ const miembrosClan = {
     },
     yoel: {
         nombre: "Yoel Lurueña",
-            const miembrosClan = {
-        fernando: {
-            nombre: "Fernando Lurueña",
-            foto: "fernando.jpg",
-            palabrasClave: ["fernando", "hermanos lurueña"],
-        palabrasClave: ["yoel"],
+        foto: "yoelluruena.jpg",
+        palabrasClave: ["yoel", "luruena", "yoelluruena", "clanluruena"],
         curriculum: `
             <ul>
                 <li><strong>Campeón del Mundo</strong> de artes marciales en combate.</li>
@@ -944,12 +928,8 @@ const miembrosClan = {
     },
     victor: {
         nombre: "Víctor Lurueña",
-            const miembrosClan = {
-        fernando: {
-            nombre: "Fernando Lurueña",
-            foto: "fernando.jpg",
-            palabrasClave: ["fernando", "hermanos lurueña"],
-        palabrasClave: ["víctor", "victor"],
+        foto: "victorluruena.jpg",
+        palabrasClave: ["víctor", "victor", "victorluruena", "víctorluruena", "clanluruena"],
         curriculum: `
             <ul>
                 <li><strong>Campeón de España</strong> de Kick Boxing Light.</li>
@@ -997,6 +977,15 @@ function abrirPerfil(id, actualizarUrl = true) {
     if (!miembro) return;
 
     document.getElementById('perfil-nombre').innerText = miembro.nombre;
+            const fotoContenedor = document.getElementById('perfil-foto-contenedor');
+        const fotoImg = document.getElementById('perfil-foto');
+        if (miembro.foto) {
+            fotoImg.src = miembro.foto;
+            fotoImg.alt = miembro.nombre;
+            fotoContenedor.style.display = 'block';
+        } else {
+            fotoContenedor.style.display = 'none';
+        }
     document.getElementById('perfil-curriculum').innerHTML = miembro.curriculum;
     document.getElementById('perfil-subtitulo-noticias').innerText = "Noticias de " + miembro.nombre;
     document.title = miembro.nombre + " | Clan Lurueña";
